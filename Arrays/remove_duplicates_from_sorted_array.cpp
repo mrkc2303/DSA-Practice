@@ -11,3 +11,31 @@ Do not allocate extra space for another array. You must do this by modifying the
 
 */
 
+class Solution {
+private: 
+    int length;
+public:    
+    int removeDuplicates(vector<int>& nums) {
+        int count = 0, temp;
+        length = nums.size();
+
+        if(length >= 2)  {
+            temp = nums[0];
+            int i=0;
+            while(i < length-1){
+                if(nums[i] == nums[i+1]) {
+                    for(int j=i+1; j<length-1; j++) {
+                        nums[j] = nums[j+1];
+                    }
+                    length--;
+                }    
+                else {
+                    i++;
+                }
+            }
+        }
+        
+        
+        return length;
+    }    
+};
