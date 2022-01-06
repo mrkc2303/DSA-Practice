@@ -1,7 +1,7 @@
 /*                    LEETCODE PROBLEM: 2114
               Maximum Number of Words Found in Sentences
                    
-  https://leetcode.com/problems/move-zeroes/
+  https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
   
   
   A sentence is a list of words that are separated by a single space with no leading or trailing spaces.
