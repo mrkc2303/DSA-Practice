@@ -8,3 +8,36 @@
   Increment the large integer by one and return the resulting array of digits.
 */
 
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int len = digits.size();
+        
+        if(digits[len-1] != 9) {
+            digits[len-1]++;
+        }
+        else {
+            //digits[len-1] = 0;
+            int i;
+            for(i=len-1; i>=0; i--) {
+                if(digits[i] == 9) {
+                    digits[i]=0;
+                } else {
+                    break;
+                }
+            }
+            
+            if(i == -1) {
+                digits[0] = 1;
+                digits.push_back(0);
+            }
+            else {
+                digits[i]++;
+            }
+        }
+        
+        return digits;
+    }
+};
+
+
