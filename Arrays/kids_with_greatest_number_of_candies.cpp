@@ -11,13 +11,24 @@
 
 class Solution {
 public:
-    vector<int> shuffle(vector<int>& nums, int n) {
-        int i=1;
-        vector<int> ans;
-        for(int i=0; i<n; i++) {
-            ans.push_back(nums[i]);
-            ans.push_back(nums[i+n]);
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+        vector<bool> ans;
+        int maxCan=0;
+        
+        for(int i=0; i<candies.size(); i++) {
+                maxCan = max(maxCan, candies[i]);
         }
+        
+        for(int i=0; i<candies.size(); i++) {
+            int temp = candies[i] + extraCandies;
+            
+            if(maxCan <= temp)
+                ans.push_back(true);
+            else
+                ans.push_back(false);
+        }
+        
+        
         return ans;
     }
 };
