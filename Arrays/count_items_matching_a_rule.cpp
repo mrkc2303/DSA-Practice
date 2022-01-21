@@ -12,3 +12,22 @@
   ruleKey == "name" and ruleValue == namei.
   Return the number of items that match the given rule.
 */
+
+class Solution {
+public:
+    int countMatches(vector<vector<string>>& items, string ruleKey, string ruleValue) {
+        int type=0, ctr=0;
+        if(ruleKey == "type")
+            type=0;
+        else if(ruleKey == "color")
+            type=1;
+        else
+            type=2;
+        
+        for(int i=0; i < items.size(); i++) {
+            if(items[i][type] == ruleValue)
+                ctr++;
+        }
+        return ctr;
+    }
+};
