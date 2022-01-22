@@ -13,3 +13,16 @@
 
   It is guaranteed that the insertion operations will be valid.
 */
+
+#include<vector>
+
+class Solution {
+public:
+    vector<int> createTargetArray(vector<int>& nums, vector<int>& index) {
+        vector<int> target;
+        for(int i=0; i<index.size(); i++) {
+            target.insert(target.begin()+index[i], nums[i]);
+        }
+        return target;
+    }
+};
