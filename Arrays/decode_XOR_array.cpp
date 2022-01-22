@@ -1,7 +1,7 @@
 /*                    LEETCODE PROBLEM: 1720
                         Decode XORed Array
                    
-  https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/
+  https://leetcode.com/problems/decode-xored-array/
   
   
   There is a hidden integer array arr that consists of n non-negative integers.
@@ -9,3 +9,16 @@
   You are given the encoded array. You are also given an integer first, that is the first element of arr, i.e. arr[0].
   Return the original array arr. It can be proved that the answer exists and is unique.
 */
+
+class Solution {
+public:
+    vector<int> decode(vector<int>& encoded, int first) {
+        vector<int> arr;
+        arr.push_back(first);
+        for(int i =0; i < encoded.size(); i++){
+            int temp = arr[i] ^ encoded[i];
+            arr.push_back(temp);
+        }
+        return arr;
+    }
+};
