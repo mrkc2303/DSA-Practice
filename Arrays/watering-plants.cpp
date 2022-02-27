@@ -53,3 +53,23 @@ Example 3:
   - 1 <= plants[i] <= 106
   - max(plants[i]) <= capacity <= 109
 */
+
+class Solution {
+public:
+    int wateringPlants(vector<int>& plants, int capacity) {
+        int water = capacity, steps=0;
+        
+        for(int i=0; i<plants.size(); i++) {
+            steps++;
+            if(water >= plants[i]) {
+                water -= plants[i];
+            } else {
+                steps += i*2;
+                water = capacity;
+                water -= plants[i];
+            }
+        }
+        
+        return steps;
+    }
+};
