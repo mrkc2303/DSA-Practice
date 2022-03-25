@@ -10,7 +10,6 @@
   * Repeat the previous step until there are no elements to read in nums and index.
   
   Return the target array.
-
   It is guaranteed that the insertion operations will be valid.
 */
 
