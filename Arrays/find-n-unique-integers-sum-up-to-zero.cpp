@@ -1,47 +1,25 @@
-/*                    LEETCODE PROBLEM-9
-                       Palindrome Number
+/*                    LEETCODE PROBLEM-1304
+                Find N Unique Integers Sum up to Zero
   
-  https://leetcode.com/problems/palindrome-number/
+  https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/
   
-  Given an integer x, return true if x is palindrome integer.
-	An integer is a palindrome when it reads the same backward as forward.
-	For example, 121 is a palindrome while 123 is not.
-
+  Given an integer n, return any array containing n unique integers such that they add up to 0.
+	
 	Example 1:
-	Input: x = 121
-	Output: true
-	Explanation: 121 reads as 121 from left to right and from right to left.
+	Input: n = 5
+	Output: [-7,-1,1,3,4]
+	Explanation: These arrays also are accepted [-5,-1,1,2,3] , [-3,-1,2,-2,4].
 	
 	Example 2:
-	Input: x = -121
-	Output: false
-	Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+	Input: n = 3
+	Output: [-1,0,1]
 	
 	Example 3:
-	Input: x = 10
-	Output: false
-	Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+	Input: n = 1
+	Output: [0]
 	
 	Constraints:
-	-231 <= x <= 231 - 1
-
-	Follow up: Could you solve it without converting the integer to a string?
+	1 <= n <= 1000
 
 */
 
-class Solution {
-public:
-    bool isPalindrome(int x) {
-        long long int clone=x, reverse=0;
-        while(clone > 0) {
-            int temp = clone % 10;
-            reverse *= 10;
-            reverse += temp;
-            clone /= 10;
-        }
-        if(x == reverse) {
-            return true;
-        }
-        return false;
-    }
-};
