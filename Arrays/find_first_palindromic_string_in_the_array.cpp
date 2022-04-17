@@ -1,7 +1,7 @@
-/*                    LEETCODE PROBLEM: 2011
-           Final Value of Variable After Performing Operations
+/*                    LEETCODE PROBLEM: 2108
+                Find First Palindromic String in the Array
                    
-  https://leetcode.com/problems/final-value-of-variable-after-performing-operations/
+  https://leetcode.com/problems/find-first-palindromic-string-in-the-array/
   
   
   There is a programming language with only four operations and one variable X:
@@ -13,14 +13,15 @@
 
 class Solution {
 public:
-    int finalValueAfterOperations(vector<string>& operations) {
-        int x=0; 
-        for(int i=0; i<operations.size(); i++) {
-            if(operations[i] == "++X" || operations[i] == "X++") 
-                x++;
-            else
-                x--;
+    string firstPalindrome(vector<string>& words) {
+        bool found;
+        for(int i=0; i<words.size(); i++) {
+            string P = words[i];
+            reverse(P.begin(), P.end());
+            if(words[i] == P) {
+                return words[i];
+            }
         }
-        return x;
+        return "";
     }
 };
