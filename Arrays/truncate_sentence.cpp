@@ -10,3 +10,19 @@
   You are given a sentence s​​​​​​ and an integer k​​​​​​. You want to truncate s​​​​​​ such that it contains only the first k​​​​​​ words. Return s​​​​​​ after truncating it.
 
 */
+
+class Solution {
+public:
+    string truncateSentence(string s, int k) {
+        string a;
+        for(int i=0; i < s.length() && k!=0; i++) {
+            if(s[i] == ' ') {
+                k--;
+            }
+            if(k!=0) {
+                a.push_back(s[i]);
+            }
+        }
+        return a;
+    }
+};
