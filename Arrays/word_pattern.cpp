@@ -22,18 +22,44 @@
 
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> arr; 
-        int size;
-        for(int i=0; i<nums.size(); i++) {
-            for(int j=i+1; j<nums.size(); j++) {
-                int sum = nums[i] + nums[j];
-                if(sum == target) {
-                    arr.push_back(i);
-                    arr.push_back(j);
+    bool wordPattern(string pattern, string s) {
+        string arr[26];
+        int ctr=-1;
+        bool isGood=true;
+        for(int i=0; i<pattern.length() && isGood == true; i++) {
+            string word="";
+            bool con = true;
+            for(int j=ctr+1; j < s.length() && con == true; j++, ctr++) {
+                if(s[j] != ' ') {
+                    word.push_back(s[j]);
+                }
+                else
+                    con = false;
+            }
+            if(arr[pattern[i] - 'a'] == "") {
+                arr[pattern[i] - 'a'] = word;
+                for(int k=0; k < 26; k++) {
+                    if(word == arr[k] && k != (pattern[i] - 'a'))
+                        isGood = false;
+                }
+            }
+            else {
+                if(arr[pattern[i] - 'a'] == word) {
+                    isGood = true;
+                }
+                else {
+                    isGood = false;
+                }
+                for(int k=0; k < 26; k++) {
+                    if(word == arr[k] && k != (pattern[i] - 'a'))
+                        isGood = false;
                 }
             }
         }
-        return arr;
+        
+        if(s.length() != ctr+1) {
+            isGood = false;
+        }
+        return isGood;
     }
 };
