@@ -19,3 +19,32 @@
 
 
 */
+
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& words) {
+        string arr[] = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        vector<string> b;
+        if(words.size() == 1)
+            return 1;
+        
+        for(int i=0; i<words.size(); i++) {
+            string temp1 = words[i], temp2="";
+            bool check = true;
+            for(int j=0; j<words[i].length(); j++) {
+                temp2 += (arr[temp1[j] - 'a']);
+            }
+            if(b.size() == 0)
+                b.push_back(temp2);
+            for(int j=0; j<b.size(); j++) {
+                if(temp2 == b[j])
+                    check = false;
+            }
+            
+            if(check)
+                b.push_back(temp2);
+        }
+        
+        return b.size();
+    }
+};
