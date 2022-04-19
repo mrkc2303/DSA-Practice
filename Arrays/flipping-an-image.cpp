@@ -28,3 +28,24 @@
 	1 <= n <= 20
 	images[i][j] is either 0 or 1.
 */
+
+class Solution {
+public:
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& image) {
+        vector<vector<int>> flip;
+        
+        for(int i=0; i < image.size(); i++) {
+            vector<int> v1;
+            for(int j=(image[i].size()-1); j >= 0; j--) {
+                if(image[i][j] == 1) {
+                    v1.push_back(0);
+                } else {
+                    v1.push_back(1);
+                }
+            }
+            flip.push_back(v1);
+        }
+        
+        return flip;
+    }
+};
