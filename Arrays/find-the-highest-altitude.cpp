@@ -22,3 +22,14 @@
 	-100 <= gain[i] <= 100
 */
 
+class Solution {
+public:
+    int largestAltitude(vector<int>& gain) {
+        int alti=0, maxalti=0;
+        for(int i=0; i < gain.size(); i++) {
+            alti += gain[i];
+            maxalti = max(alti, maxalti);
+        }
+        return maxalti;
+    }
+};
