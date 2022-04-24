@@ -29,3 +29,19 @@
 
 */
 
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        long long int clone=x, reverse=0;
+        while(clone > 0) {
+            int temp = clone % 10;
+            reverse *= 10;
+            reverse += temp;
+            clone /= 10;
+        }
+        if(x == reverse) {
+            return true;
+        }
+        return false;
+    }
+};
