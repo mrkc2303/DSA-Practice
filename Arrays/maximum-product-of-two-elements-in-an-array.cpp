@@ -24,3 +24,22 @@
 	1 <= nums[i] <= 10^3
 
 */
+
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int largest, sLargest;
+        largest = sLargest = INT_MIN;
+        
+        for(int i=0; i < nums.size(); i++) {
+            if(nums[i] > largest) {
+                sLargest = largest;
+                largest = nums[i];
+            }
+            else if(nums[i] > sLargest) {
+                sLargest = nums[i];
+            }
+        }
+        return ((largest-1)*(sLargest-1));
+    }
+};
