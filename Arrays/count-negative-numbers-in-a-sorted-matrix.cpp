@@ -1,68 +1,35 @@
-/*                    LEETCODE PROBLEM: 125
-                         Valid Palindrome
+/*                    LEETCODE PROBLEM: 1351
+            Count Negative Numbers in a Sorted Matrix
                    
-  https://leetcode.com/problems/valid-palindrome/
+  https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/
   
-  A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
-  Given a string s, return true if it is a palindrome, or false otherwise.
+  Given a m x n matrix grid which is sorted in non-increasing order both row-wise and column-wise, return the number of negative numbers in grid.
 
-  Example 1:
-  Input: s = "A man, a plan, a canal: Panama"
-  Output: true
-  Explanation: "amanaplanacanalpanama" is a palindrome.
-  
-  Example 2:
-  Input: s = "race a car"
-  Output: false
-  Explanation: "raceacar" is not a palindrome.
-  
-  Example 3:
-  Input: s = " "
-  Output: true
-  Explanation: s is an empty string "" after removing non-alphanumeric characters.
-  Since an empty string reads the same forward and backward, it is a palindrome.
-
-
-  Constraints:
-  1 <= s.length <= 2 * 105
-  s consists only of printable ASCII characters.
-
+	Example 1:
+	Input: grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]
+	Output: 8
+	Explanation: There are 8 negatives number in the matrix.
+	
+	Example 2:
+	Input: grid = [[3,2],[1,0]]
+	Output: 0
+	
+	Constraints:
+	m == grid.length
+	n == grid[i].length
+	1 <= m, n <= 100
+	-100 <= grid[i][j] <= 100
 */
-
 
 class Solution {
 public:
-    bool isPalindrome(string s) {
-        int i=0, j = s.length();
-        transform(s.begin(), s.end(), s.begin(), ::tolower);
-        string changed;
-        for(i=0; i < j; i++) {
-            if((s[i] >= 97 && s[i] <= 122) || (s[i] >= 48 && s[i] <= 57))
-                changed.push_back(s[i]);
+    int countNegatives(vector<vector<int>>& grid) {
+        int negativeNum=0;
+        for(int i=0; i < grid.size(); i++) {
+            for(int j=grid[i].size()-1; j >= 0  && grid[i][j] < 0; j--) {
+                    negativeNum++;
+            }
         }
-        cout << changed;
-        
-        if(changed.length() == 1)
-            return true;
-        
-        if(changed.length() == 2) {
-            if(changed[0] == changed[1])
-                return true;
-            else
-                return false;
-        }
-            
-            
-        i=0;
-        j=changed.length()-1;
-        while(i <= j) {
-            cout << j << changed[i] << " " << changed[j] << "    ";
-            if(changed[i] != changed[j])
-                return false;
-            
-            i++;
-            j--;
-        }  
-        return true;
+        return negativeNum;
     }
 };
