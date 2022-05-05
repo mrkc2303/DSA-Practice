@@ -28,3 +28,20 @@
 
 */
 
+class Solution {
+public:
+    int sumOfUnique(vector<int>& nums) {
+        int arr[101]={0};
+        int sum=0;
+        for(int i=0; i < nums.size(); i++) {
+            sum += nums[i];
+            arr[nums[i]]++;
+        }
+        for(int i=0; i < 101; i++) {
+            if(arr[i] > 1) {
+                sum -= i*arr[i];
+            }
+        }
+        return sum;
+    }
+};
