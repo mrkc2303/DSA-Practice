@@ -1,7 +1,7 @@
 /*                    LEETCODE PROBLEM: 1475
               Final Prices With a Special Discount in a Shop
                    
-  https://leetcode.com/problems/valid-palindrome/
+  https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/	
   
   Given the array prices where prices[i] is the price of the ith item in a shop. There is a special discount for items in the shop, if you buy the ith item, then you will receive a discount equivalent to prices[j] where j is the minimum index such that j > i and prices[j] <= prices[i], otherwise, you will not receive any discount at all.
 	Return an array where the ith element is the final price you will pay for the ith item of the shop considering the special discount.
@@ -29,3 +29,22 @@
 	1 <= prices[i] <= 10^3
 
 */
+
+class Solution {
+public:
+    vector<int> finalPrices(vector<int>& prices) {
+        vector<int> ans;
+        for(int i=0; i < prices.size(); i++) {
+            int dis=0;
+            for(int j=i+1; j < prices.size(); j++) {
+                if(prices[j] <= prices[i]) {
+                    dis = prices[j];
+                    break;
+                }
+            }
+            ans.push_back(prices[i] - dis);
+        }
+        
+        return ans;
+    }
+};
