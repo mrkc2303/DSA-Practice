@@ -38,40 +38,16 @@
 
 */
 
-
 class Solution {
 public:
-    bool isPalindrome(string s) {
-        int i=0, j = s.length();
-        transform(s.begin(), s.end(), s.begin(), ::tolower);
-        string changed;
-        for(i=0; i < j; i++) {
-            if((s[i] >= 97 && s[i] <= 122) || (s[i] >= 48 && s[i] <= 57))
-                changed.push_back(s[i]);
+    int heightChecker(vector<int>& heights) {
+        int check=0;
+        vector<int> temp = heights;
+        sort(temp.begin(), temp.end());
+        for(int i=0; i<heights.size(); i++) {
+            if(heights[i] != temp[i])
+                check++;
         }
-        cout << changed;
-        
-        if(changed.length() == 1)
-            return true;
-        
-        if(changed.length() == 2) {
-            if(changed[0] == changed[1])
-                return true;
-            else
-                return false;
-        }
-            
-            
-        i=0;
-        j=changed.length()-1;
-        while(i <= j) {
-            cout << j << changed[i] << " " << changed[j] << "    ";
-            if(changed[i] != changed[j])
-                return false;
-            
-            i++;
-            j--;
-        }  
-        return true;
+        return check;
     }
 };
