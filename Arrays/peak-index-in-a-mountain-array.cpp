@@ -29,4 +29,32 @@
 
 */
 
+/*						BRUTE FORCE APPROACH
 
+	class Solution {
+	public:
+			int peakIndexInMountainArray(vector<int>& arr) {
+					bool status;
+					for(int i=0; i < arr.size(); i++) {
+							status = true;
+							for(int j = 0; j < i-1 && status == true; j++) {
+									if(arr[j] > arr[i] || arr[j+1] < arr[j])
+											status = false;
+							}
+							
+							for(int j = i+1; j < arr.size()-1 && status == true; j++) {
+									if(arr[j] > arr[i] || arr[j+1] > arr[j])
+											status = false;
+							}
+									
+							
+							if(status) {
+									return i;
+							}
+					}
+					return -1;
+			}
+	};
+
+
+*/
