@@ -58,3 +58,17 @@
 
 
 */
+
+class Solution {
+public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+        
+        int ctr = 1;
+        while(ctr < arr.size() && arr[ctr] > arr[ctr - 1])
+        {
+            ctr++;
+        }
+        
+        return ctr - 1;
+    }
+};
