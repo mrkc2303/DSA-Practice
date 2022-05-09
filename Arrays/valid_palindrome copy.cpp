@@ -31,3 +31,38 @@
 
 */
 
+#include<vector>
+
+class Solution {
+public:
+    int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
+        vector<int> temp;
+        int ans=0;
+        for(int i=0; i < boxTypes.size(); i++) {
+            temp.push_back(boxTypes[i][1]);
+        }
+        
+        for(int i=0; i < boxTypes.size() && truckSize > 0; i++) {
+            int maxIdx = 0;
+            int maxEle = 0;
+            for(int j=0; j < boxTypes.size(); j++) {
+                if(temp[j] > maxEle) {
+                    maxEle = temp[j];
+                    maxIdx = j;
+                }
+            }   
+            if(truckSize > boxTypes[maxIdx][0]) {
+                ans += (boxTypes[maxIdx][0] * boxTypes[maxIdx][1]);
+                truckSize -= boxTypes[maxIdx][0];
+            } else {
+                while(truckSize--) {
+                    ans += boxTypes[maxIdx][1];
+                }
+            }
+            
+            temp[maxIdx] = -1;
+
+        }
+        return ans;        
+    }
+};
